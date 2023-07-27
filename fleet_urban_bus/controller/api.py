@@ -56,3 +56,47 @@ class ApiWebService(http.Controller):
 				'detail': str(err),
 			}
 			return request.make_response(json.dumps(rpta), [('Content-Type', 'application/json')])
+
+			
+	@http.route('/api/webservice/paraderos/', type='http', auth="public", methods=['GET'],csrf=False)
+	def api_licitacionadvancelineareport_post(self, *args, **kw):
+		try:
+			user = kw['UserName']
+			password = kw['Password']
+			data = []
+			if user == 'API_bus_urban_User' and password == 'Api$pass&256Gt4tHE63':            
+				sql = """SELECT  
+								id as "Id", 
+								name as "Name", 
+								direccion as "Direccion", 
+								forward as "Forward", 
+								lon as "Lon",
+								lat as "Lat",
+								type as "Type",
+								has_board as "HasBoard",
+								virtual as "Virtual",
+						 FROM fleet_stops""" 
+				request.env.cr.execute(sql)
+				data = request.env.cr.dictfetchall()
+
+				# Construir el resultado final
+				result = {
+					"Stops": data
+				}
+
+				return request.make_response(json.dumps(result), [('Content-Type', 'application/json')])
+
+			else:
+				rpta = {
+					'status':'Error Data',
+					'log':'Datos de Conexion erroneos',
+				}
+				return request.make_response(json.dumps(rpta), [('Content-Type', 'application/json')])
+
+		except Exception as err:
+			rpta = {
+				'status':'Error Process',
+				'log':'Datos de Conexion erroneos',
+				'detail': str(err),
+			}
+			return request.make_response(json.dumps(rpta), [('Content-Type', 'application/json')])
