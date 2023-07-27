@@ -117,14 +117,14 @@ class ApiWebService(http.Controller):
 								frf.lat as "Lat"							
 						 FROM fleet_route_forward frf
 						 LEFT JOIN fleet_vehicle fv ON fv.id = frf.vehicle_id
-						 where fv.routenumber = %s"""%(str(codigo_ruta))
+						 where fv.routenumber = %s"""%(str("'"+str(codigo_ruta)+"'"))
 				if id_o_vuelta == "backward":
 					sql = """SELECT  
 								frb.lon as "Lon",
 								frb.lat as "Lat"	
 						 FROM fleet_route_backward frb
 						 LEFT JOIN fleet_vehicle fv ON fv.id = frb.vehicle_id
-						 where fv.routenumber = %s"""% (str(codigo_ruta))
+						 where fv.routenumber = %s"""%(str("'"+str(codigo_ruta)+"'"))
 
 				 
 				request.env.cr.execute(sql)
