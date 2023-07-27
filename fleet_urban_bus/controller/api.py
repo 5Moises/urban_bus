@@ -126,10 +126,18 @@ class ApiWebService(http.Controller):
 						 LEFT JOIN fleet_vehicle fv ON fv.id = frb.vehicle_id
 						 where fv.routenumber = %s"""%(str("'"+str(codigo_ruta)+"'"))
 
-				 
+				
 				request.env.cr.execute(sql)
-				data = request.env.cr.dictfetchall()				
-				return request.make_response(json.dumps(data), [('Content-Type', 'application/json')])
+				data = request.env.cr.dictfetchall()	
+				if id_o_vuelta == "forward":
+					result = {
+					"forward": data
+					}
+				if id_o_vuelta == "backward":
+					result = {
+					"backward": data
+					}			
+				return request.make_response(json.dumps(result), [('Content-Type', 'application/json')])
 
 			else:
 				rpta = {
