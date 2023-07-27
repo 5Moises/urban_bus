@@ -66,7 +66,7 @@ class ApiWebService(http.Controller):
 			data = []
 			if user == 'API_bus_urban_User' and password == 'Api$pass&256Gt4tHE63':            
 				sql = """SELECT  
-								id as "Id", 
+								id as "StopId", 
 								name as "Name", 
 								direccion as "Direccion", 
 								forward as "Forward", 
@@ -100,3 +100,91 @@ class ApiWebService(http.Controller):
 				'detail': str(err),
 			}
 			return request.make_response(json.dumps(rpta), [('Content-Type', 'application/json')])
+
+	@http.route('/api/webservice/rutas/', type='http', auth="public", methods=['GET'],csrf=False)	
+	def getrutas(self, *args, **kw):
+		try:
+			user = kw['UserName']
+			password = kw['Password']
+			codigo_ruta = kw['code_ruta']
+			id_o_vuelta = kw['type_ruta']
+			data = []
+			if user == 'API_bus_urban_User' and password == 'Api$pass&256Gt4tHE63':            
+				sql = ""
+				if id_o_vuelta = "forward":
+					sql = """SELECT  								
+								frb.lon as "Lon",
+								frb.lat as "Lat"							
+						 FROM fleet_route_forward frb
+						 LEFT JOIN fleet_vehicle fv ON fv.id = frf.vehicle_id
+						 where fv.routenumber = %s"""% (str(codigo_ruta))
+				if id_o_vuelta = "backward":
+					sql = """SELECT  
+								frb.lon as "Lon",
+								frb.lat as "Lat"	
+						 FROM fleet_route_backward frb
+						 LEFT JOIN fleet_vehicle fv ON fv.id = frb.vehicle_id
+						 where fv.routenumber = %s""" % (tr(codigo_ruta))
+
+				 
+				request.env.cr.execute(sql)
+				data = request.env.cr.dictfetchall()				
+				return request.make_response(json.dumps(data), [('Content-Type', 'application/json')])
+
+			else:
+				rpta = {
+					'status':'Error Data',
+					'log':'Datos de Conexion erroneos',
+				}
+				return request.make_response(json.dumps(rpta), [('Content-Type', 'application/json')])
+
+		except Exception as err:
+			rpta = {
+				'status':'Error Process',
+				'log':'Datos de Conexion erroneos',
+				'detail': str(err),
+			}
+			return request.make_response(json.dumps(rpta), [('Content-Type', 'application/json')])
+
+
+
+	@http.route('/api/webservice/horario/', type='http', auth="public", methods=['GET'],csrf=False)	
+	def getrutas(self, *args, **kw):
+		try:
+			user = kw['UserName']
+			password = kw['Password']
+			codigo_paradero = kw['id_paradero']			
+			data = []
+			if user == 'API_bus_urban_User' and password == 'Api$pass&256Gt4tHE63':            
+				
+				sql = """SELECT
+						fv.codigo_ruta as "RouteNumber"  								
+						ft.destinationstopname as "DestinationStopName",
+						arrivaltime as "ArrivalTime"							
+						FROM fleet_timetable ft
+						LEFT JOIN fleet_vehicle fv ON fv.id = ft.routenumber_id
+						where ft.stop_id = %d"""% (int(codigo_paradero))
+				
+
+				 
+				request.env.cr.execute(sql)
+				data = request.env.cr.dictfetchall()				
+				return request.make_response(json.dumps(data), [('Content-Type', 'application/json')])
+
+			else:
+				rpta = {
+					'status':'Error Data',
+					'log':'Datos de Conexion erroneos',
+				}
+				return request.make_response(json.dumps(rpta), [('Content-Type', 'application/json')])
+
+		except Exception as err:
+			rpta = {
+				'status':'Error Process',
+				'log':'Datos de Conexion erroneos',
+				'detail': str(err),
+			}
+			return request.make_response(json.dumps(rpta), [('Content-Type', 'application/json')])
+
+
+
