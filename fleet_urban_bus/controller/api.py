@@ -18,7 +18,7 @@ _logger = logging.getLogger(__name__)
 class ApiWebService(http.Controller):
 
 	@http.route('/api/webservice/en_bus_lines/', type='http', auth="public", methods=['GET'],csrf=False)
-	def api_licitacionadvancelineareport_post(self, *args, **kw):
+	def get_en_bus_lines(self, *args, **kw):
 		try:
 			user = kw['UserName']
 			password = kw['Password']
@@ -59,7 +59,7 @@ class ApiWebService(http.Controller):
 
 			
 	@http.route('/api/webservice/paraderos/', type='http', auth="public", methods=['GET'],csrf=False)
-	def api_licitacionadvancelineareport_post(self, *args, **kw):
+	def getparaderos(self, *args, **kw):
 		try:
 			user = kw['UserName']
 			password = kw['Password']
