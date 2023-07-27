@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 {
-    'name':"Api WebService",
+    'name':"urban_bus",
     'summary':
-        """ Api WebService """,
+        """urban_bus """,
     'description':
     """
-    - Api WebService
+    - urban_bus
     """,
-    'author':"Glenda Julia",
+    'author':"Sebastian Moises Loraico Lopez",
     'website': "",
-    'category':'Api WebService',
+    'category':'urban_bus',
     'version':'1.0',
     'depends':
-        [],
-    'data': []
+        ['fleet'],
+    'data': ['views/fleet_stops.xml','views/fleet_vehicule.xml',]
 }

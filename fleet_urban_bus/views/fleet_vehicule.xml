@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="view_vehicle_form" model="ir.ui.view">
+        <field name="name">fleet.vehicle.form</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.view_vehicle_form"/>
+        <field name="arch" type="xml">
+            <field name="license_plate" position="after">
+                <field name="color" invisible="1"/>
+                <field name="longname"/>
+                <field name="routenumber"/>
+                <field name="stopa"/>
+                <field name="stopb"/>
+                <field name="type" readonly="1"/>         
+            </field>
+        </field>
+        <xpath expr="//page[@name='tax_info']" position="before">
+            <page string="Rutas">
+                <group>
+                    <group string="Salidas">
+                      <field name="forward_ids"/>
+                </group>
+                <group string="Entradas">
+                      <field name="backward_ids"/>
+                </group>
+                </group>
+            </page>
+        </xpath>
+    </record>
+
+</odoo>

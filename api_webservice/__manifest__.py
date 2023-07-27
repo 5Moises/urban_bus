@@ -7,7 +7,7 @@
     """
     - Api WebService
     """,
-    'author':"Glenda Julia",
+    'author':"Sebastian Moises Loraico Lopez",
     'website': "",
     'category':'Api WebService',
     'version':'1.0',

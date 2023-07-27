@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="view_fleet_stops_tree" model="ir.ui.view">
+            <field name="name">fleet.stops.tree</field>
+            <field name="model">fleet.stops</field>
+            <field name="arch" type="xml">
+                <tree string="Paraderos">
+                    <field name="name"/>
+                    <field name="direccion"/>
+                    <field name="forward"/>
+                    <field name="lon"/>
+                    <field name="lat"/>
+                    <field name="type"  readonly = "1"/>
+                    <field name="has_board" invisible = "1"/>
+                    <field name="virtual"  invisible = "1"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- form view -->
+        <record id="view_fleet_stops_form" model="ir.ui.view">
+            <field name="name">fleet.stops.form</field>
+            <field name="model">fleet.stops</field>
+            <field name="arch" type="xml">
+                <form string="Paraderos">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="direccion"/>
+                                <field name="forward" string="Ida y Vuelta"/>
+                            </group>
+                            <group>
+                                <field name="lat"/>
+                                <field name="type" readonly = "1"/>
+                                <field name="has_board" invisible = "1"/>
+                                <field name="virtual" invisible = "1"/>
+                            </group>
+                            <notebook>
+                                <page string="Horario">
+                                     <group>
+                                         <field name="timetable_ids"/>
+                                     </group>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_fleet_stops" model="ir.actions.act_window">
+            <field name="name">Paraderos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fleet.stops</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Crear un nuevo paradero
+                </p>
+                <p>
+                Aquí puedes agregar y administrar tus paraderos.
+                </p>
+            </field>
+        </record>
+
+        <!-- menu item -->
+        <menuitem id="menu_fleet_stops" name="Paraderos" action="action_fleet_stops" parent="fleet.fleet_vehicles"/>
+    </data>
+</odoo>
