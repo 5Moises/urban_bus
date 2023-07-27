@@ -160,7 +160,7 @@ class ApiWebService(http.Controller):
 				sql = """SELECT
 						fv.codigo_ruta as "RouteNumber"  								
 						ft.destinationstopname as "DestinationStopName",
-						arrivaltime as "ArrivalTime"							
+						ft.arrivaltime as "ArrivalTime"							
 						FROM fleet_timetable ft
 						LEFT JOIN fleet_vehicle fv ON fv.id = ft.routenumber_id
 						where ft.stop_id = %d"""% (int(codigo_paradero))
