@@ -113,15 +113,15 @@ class ApiWebService(http.Controller):
 				sql = ""
 				if id_o_vuelta == "forward":
 					sql = """SELECT  								
-								frf.lon as "Lon",
-								frf.lat as "Lat"							
+								frf.lon as "longitude",
+								frf.lat as "latitude"							
 						 FROM fleet_route_forward frf
 						 LEFT JOIN fleet_vehicle fv ON fv.id = frf.vehicle_id
 						 where fv.routenumber = %s"""%(str("'"+str(codigo_ruta)+"'"))
 				if id_o_vuelta == "backward":
 					sql = """SELECT  
-								frb.lon as "Lon",
-								frb.lat as "Lat"	
+								frb.lon as "longitude",
+								frb.lat as "latitude"	
 						 FROM fleet_route_backward frb
 						 LEFT JOIN fleet_vehicle fv ON fv.id = frb.vehicle_id
 						 where fv.routenumber = %s"""%(str("'"+str(codigo_ruta)+"'"))
