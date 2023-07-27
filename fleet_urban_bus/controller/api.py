@@ -158,13 +158,13 @@ class ApiWebService(http.Controller):
 			if user == 'API_bus_urban_User' and password == 'Api$pass&256Gt4tHE63':            
 				
 				sql = """SELECT
-						fv.codigo_ruta as "RouteNumber"  								
+						fv.codigo_ruta as "RouteNumber",								
 						ft.destinationstopname as "DestinationStopName",
-						ft.arrivaltime as "ArrivalTime"							
+						ft.arrivaltime as "ArrivalTime",							
 						FROM fleet_timetable ft
 						LEFT JOIN fleet_vehicle fv ON fv.id = ft.routenumber_id
 						where ft.stop_id = %d"""% (int(codigo_paradero))
-				
+
 
 				 
 				request.env.cr.execute(sql)
