@@ -6,27 +6,37 @@
         <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
         <field name="arch" type="xml">
             <field name="license_plate" position="after">
-                <field name="color" invisible="1"/>
-                <field name="longname"/>
-                <field name="routenumber"/>
-                <field name="stopa"/>
-                <field name="stopb"/>
-                <field name="type" readonly="1"/>
+                <group>
+                    <field name="color" invisible="1"/>
+                    <field name="longname"/>
+                    <field name="routenumber" string="Codigo ruta"/>
+                    <field name="stopa"/>
+                    <field name="stopb"/>
+                    <field name="type" readonly="1" string="Tipo"/>
+                </group>
             </field>
             <xpath expr="//page[@name='tax_info']" position="before">
                 <page string="Rutas">
                     <group>
                         <group string="Salidas">
-                            <field name="forward_ids"/>
+                            <field name="forward_ids">
+                                <tree editable="bottom">
+                                    <field name="lat"/>
+                                    <field name="lon"/>
+                                </tree>
+                            </field>
                         </group>
                         <group string="Entradas">
-                            <field name="backward_ids"/>
+                            <field name="backward_ids">
+                                <tree editable="bottom">
+                                    <field name="lat"/>
+                                    <field name="lon"/>
+                                </tree>
+                            </field>
                         </group>
                     </group>
                 </page>
             </xpath>
         </field>
-
     </record>
-
 </odoo>
