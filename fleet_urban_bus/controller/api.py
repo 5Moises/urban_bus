@@ -158,7 +158,7 @@ class ApiWebService(http.Controller):
 			if user == 'API_bus_urban_User' and password == 'Api$pass&256Gt4tHE63':            
 				
 				sql = """SELECT
-						fv.codigo_ruta as "RouteNumber",								
+						fv.routenumber as "RouteNumber",								
 						ft.destinationstopname as "DestinationStopName",
 						ft.arrivaltime as "ArrivalTime"							
 						FROM fleet_timetable ft
