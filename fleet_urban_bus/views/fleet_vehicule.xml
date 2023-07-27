@@ -11,21 +11,22 @@
                 <field name="routenumber"/>
                 <field name="stopa"/>
                 <field name="stopb"/>
-                <field name="type" readonly="1"/>         
+                <field name="type" readonly="1"/>
             </field>
+            <xpath expr="//page[@name='tax_info']" position="before">
+                <page string="Rutas">
+                    <group>
+                        <group string="Salidas">
+                            <field name="forward_ids"/>
+                        </group>
+                        <group string="Entradas">
+                            <field name="backward_ids"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
         </field>
-        <xpath expr="//page[@name='tax_info']" position="before">
-            <page string="Rutas">
-                <group>
-                    <group string="Salidas">
-                      <field name="forward_ids"/>
-                </group>
-                <group string="Entradas">
-                      <field name="backward_ids"/>
-                </group>
-                </group>
-            </page>
-        </xpath>
+
     </record>
 
 </odoo>

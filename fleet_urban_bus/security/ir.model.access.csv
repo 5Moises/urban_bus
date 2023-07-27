@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fleet_timetable_manager,fleet.timetable.manager,model_fleet_timetable,,1,1,1,1
+access_fleet_stops_manager,fleet.stops.manager,model_fleet_stops,,1,1,1,1
+access_fleet_route_forward_manager,fleet.route.forward.manager,model_fleet_route_forward,,1,1,1,1
+access_fleet_route_backward_manager,fleet.route.backward.manager,model_fleet_route_backward,,1,1,1,1

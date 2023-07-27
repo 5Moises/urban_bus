@@ -13,5 +13,5 @@
     'version':'1.0',
     'depends':
         ['fleet'],
-    'data': ['views/fleet_stops.xml','views/fleet_vehicule.xml',]
+    'data': ['security/ir.model.access.csv','views/fleet_stops.xml','views/fleet_vehicule.xml',]
 }

@@ -2,7 +2,7 @@ from odoo import _, api, fields, models, tools
 
 class fleet_timetable(models.Model):
     _name = 'fleet.timetable'
-    _description = 'Horarios'
+    _description = 'Horarios'   
 
   
 
