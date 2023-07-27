@@ -74,7 +74,7 @@ class ApiWebService(http.Controller):
 								lat as "Lat",
 								type as "Type",
 								has_board as "HasBoard",
-								virtual as "Virtual",
+								virtual as "Virtual"
 						 FROM fleet_stops""" 
 				request.env.cr.execute(sql)
 				data = request.env.cr.dictfetchall()
