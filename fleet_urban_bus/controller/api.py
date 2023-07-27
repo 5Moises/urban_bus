@@ -129,15 +129,8 @@ class ApiWebService(http.Controller):
 				
 				request.env.cr.execute(sql)
 				data = request.env.cr.dictfetchall()	
-				if id_o_vuelta == "forward":
-					result = {
-					"forward": data
-					}
-				if id_o_vuelta == "backward":
-					result = {
-					"backward": data
-					}			
-				return request.make_response(json.dumps(result), [('Content-Type', 'application/json')])
+				
+				return request.make_response(json.dumps(data), [('Content-Type', 'application/json')])
 
 			else:
 				rpta = {
