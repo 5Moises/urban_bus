@@ -84,7 +84,7 @@ class ApiWebService(http.Controller):
 					"Stops": data
 				}
 
-				return request.make_response(json.dumps(data	), [('Content-Type', 'application/json')])
+				return request.make_response(json.dumps(data), [('Content-Type', 'application/json')])
 
 			else:
 				rpta = {
@@ -128,8 +128,11 @@ class ApiWebService(http.Controller):
 
 				 
 				request.env.cr.execute(sql)
-				data = request.env.cr.dictfetchall()				
-				return request.make_response(json.dumps(data), [('Content-Type', 'application/json')])
+				data = request.env.cr.dictfetchall()	
+				result = {
+					"ArrivalTime": data
+				}			
+				return request.make_response(json.dumps(result), [('Content-Type', 'application/json')])
 
 			else:
 				rpta = {
