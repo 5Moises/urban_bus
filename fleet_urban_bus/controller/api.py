@@ -170,6 +170,8 @@ class ApiWebService(http.Controller):
 				request.env.cr.execute(sql)
 				data = request.env.cr.dictfetchall()
 				result = {
+					"stationId": str(codigo_paradero),
+    				"stationName": "Estación A",
 					"ArrivalTime": data
 				}						
 				return request.make_response(json.dumps(result), [('Content-Type', 'application/json')])
