@@ -15,9 +15,7 @@ from odoo.addons.base.models.ir_qweb_fields import nl2br
 
 _logger = logging.getLogger(__name__)
 
-
 class ApiWebService(http.Controller):
-	
 
 	@http.route('/api/webservice/en_bus_lines/', type='http', auth="public", methods=['GET'],csrf=False)
 	def api_licitacionadvancelineareport_post(self, *args, **kw):
@@ -25,21 +23,36 @@ class ApiWebService(http.Controller):
 			user = kw['UserName']
 			password = kw['Password']
 			data = []
-			if user == 'API_bus_urban_User' and password == 'Api$pass&256Gt4tHE63':			
-				sql = """SELECT * FROM fleet_vehicle""" 
+			if user == 'API_bus_urban_User' and password == 'Api$pass&256Gt4tHE63':            
+				sql = """SELECT color as "Color", 
+								id as "Id", 
+								longname as "LongName", 
+								routenumber as "RouteNumber", 
+								stopa as "StopA", 
+								stopb as "StopB",
+								type as "Type" 
+						 FROM fleet_vehicle""" 
 				request.env.cr.execute(sql)
 				data = request.env.cr.dictfetchall()
-				return str(data)
+
+				# Construir el resultado final
+				result = {
+					"Bus": data
+				}
+
+				return request.make_response(json.dumps(result), [('Content-Type', 'application/json')])
+
 			else:
 				rpta = {
 					'status':'Error Data',
 					'log':'Datos de Conexion erroneos',
 				}
-				return str(rpta)
+				return request.make_response(json.dumps(rpta), [('Content-Type', 'application/json')])
+
 		except Exception as err:
 			rpta = {
 				'status':'Error Process',
 				'log':'Datos de Conexion erroneos',
 				'detail': str(err),
 			}
-			return str(rpta)
+			return request.make_response(json.dumps(rpta), [('Content-Type', 'application/json')])
