@@ -111,14 +111,14 @@ class ApiWebService(http.Controller):
 			data = []
 			if user == 'API_bus_urban_User' and password == 'Api$pass&256Gt4tHE63':            
 				sql = ""
-				if id_o_vuelta = "forward":
+				if id_o_vuelta == "forward":
 					sql = """SELECT  								
 								frb.lon as "Lon",
 								frb.lat as "Lat"							
 						 FROM fleet_route_forward frb
 						 LEFT JOIN fleet_vehicle fv ON fv.id = frf.vehicle_id
 						 where fv.routenumber = %s"""% (str(codigo_ruta))
-				if id_o_vuelta = "backward":
+				if id_o_vuelta == "backward":
 					sql = """SELECT  
 								frb.lon as "Lon",
 								frb.lat as "Lat"	
@@ -149,7 +149,7 @@ class ApiWebService(http.Controller):
 
 
 	@http.route('/api/webservice/horario/', type='http', auth="public", methods=['GET'],csrf=False)	
-	def getrutas(self, *args, **kw):
+	def gethorario(self, *args, **kw):
 		try:
 			user = kw['UserName']
 			password = kw['Password']
