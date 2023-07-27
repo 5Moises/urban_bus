@@ -84,7 +84,7 @@ class ApiWebService(http.Controller):
 					"Stops": data
 				}
 
-				return request.make_response(json.dumps(data), [('Content-Type', 'application/json')])
+				return request.make_response(json.dumps(data	), [('Content-Type', 'application/json')])
 
 			else:
 				rpta = {

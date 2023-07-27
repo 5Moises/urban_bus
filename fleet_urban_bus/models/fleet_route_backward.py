@@ -5,8 +5,8 @@ class fleet_route_backward(models.Model):
     _description = 'Regreso'
 
     
-    lon = fields.Char(string="Longitud")
-    lat = fields.Char(string="Latitud")
+    lon = fields.Char(string="Longitud", digits=(64,12))
+    lat = fields.Char(string="Latitud", digits=(64,12))
     vehicle_id = fields.Many2one(
         'fleet.vehicle',
         string='Vehiculo',
