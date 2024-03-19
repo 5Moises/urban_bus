@@ -22,7 +22,7 @@ class viverco_main(models.Model):
 		self.asig_date()
 		return result
 	
-	@api.multi
+	
 	def write(self, values):
 		res = super().write(values)
 		for i in self:
