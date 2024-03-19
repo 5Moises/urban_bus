@@ -23,11 +23,11 @@ class viverco_main(models.Model):
 		return result
 	
 	
-	def write(self, values):
-		res = super().write(values)
-		for i in self:
-			i.asig_date()
-		return res
+	#def write(self, values):
+	#	res = super().write(values)
+	#	for i in self:
+	#		i.asig_date()
+	#	return res
    
    
 	
@@ -39,12 +39,15 @@ class viverco_main(models.Model):
 	def asig_date(self):
 		for i in self:
 			if not i.date_create:
-				i.date_create = fields.Datetime.today()
+				
 			if  fields.Date.today() !=  i.date_update:
 				i.date_update =  fields.Date.today()
+
+
 	def get_aproved():
 		for i in self:
 			i.state = "aproved"
+
 	def get_cancel():
 		for i in self:
 			i.state = "cancel"     

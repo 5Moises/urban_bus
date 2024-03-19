@@ -8,11 +8,7 @@
             <field name="model">viverco.main</field>
             <field name="arch" type="xml">
                 <form string="Viverco SAC">
-                    <header>
-                        <button string="Aprobar" name="get_aproved" type="object" class="oe_highlight"/>
-                        <button string="Cancelar" name="get_cancel" type="object" class="oe_highlight"/>
-
-                    </header>
+                   
                     <sheet>
                         <group class="oe_title">
                             <h1>
