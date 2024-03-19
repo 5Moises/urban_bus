@@ -7,9 +7,9 @@
                 <tree string="Viverco">
                     <field name= "name"/>
                     <field name= "descrip"/>
-                    <field name = "date_create"/>
-                    <field name = "date_update"/>
-                    <field name = "state" widget="badge" decoration-danger="(state == 'cancel')"
+                    <field name= "date_create"/>
+                    <field name= "date_update"/>
+                    <field name="state" widget="badge" decoration-danger="(state == 'cancel')"
 							decoration-success = "(state == 'aproved')"/>
                 </tree>
             </field>
@@ -32,10 +32,9 @@
                             </h1>
                         </group>
                         <group>
-                            <field name= "name"/>
                             <field name= "descrip"/>
-                            <field name = "date_create" readonly="1"/>
-                            <field name = "date_update" readonly="1"/>
+                            <field name= "date_create"/>
+                            <field name= "date_update"/>
                         </group>
                     </sheet>
                 </form>
@@ -45,7 +44,7 @@
         <record id="viverco_action" model="ir.actions.act_window">
             <field name="name">viverco.action</field>
             <field name="res_model">viverco.main</field>
-            <field name="view_type">form</field>
+            <field name="view_type">tree</field>
             <field name="view_mode">tree,form</field>
         </record>
 
