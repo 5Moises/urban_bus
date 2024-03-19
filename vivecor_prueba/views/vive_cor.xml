@@ -1,14 +1,19 @@
 <odoo>
     <data>
-    |   <menuitem id="viverco_main_menu" name="Viverco" sequence="1"/>
+    |        <menuitem id="viverco_main_menu" name="Viverco" sequence="1"/>
 
 
-         <record id="viverco_form" model="ir.ui.view">
+        <record id="viverco_form" model="ir.ui.view">
             <field name="name">viverco.main.form</field>
             <field name="model">viverco.main</field>
             <field name="arch" type="xml">
                 <form string="Viverco SAC">
-                  
+                    <header>
+                        <button string="Aprobar" name="get_aproved" type="object" class="oe_highlight"/>
+                        <button string="Cancelar" name="get_cancel" type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,aproved,cancel"/>
+
+                    </header>
                     <sheet>
                         <group class="oe_title">
                             <h1>
@@ -39,22 +44,22 @@
                 </tree>
             </field>
         </record>
-       
 
-       <record id="viverco_action" model="ir.actions.act_window">
+
+        <record id="viverco_action" model="ir.actions.act_window">
             <field name="name">Viverco main</field>
             <field name="res_model">viverco.main</field>
             <field name="view_mode">tree,form</field>
-			<field name="view_id" ref="viverco_tree"/>
+            <field name="view_id" ref="viverco_tree"/>
             <field name="domain">[]</field>
-			<field name="help" type="html">
-			<p class="o_view_nocontent_smiling_face">
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
 				Crea tu primer registro
-			</p>
-			</field>
+                </p>
+            </field>
         </record>
         <menuitem id="Viverco_menu" name="Viverco" action="viverco_action" parent="viverco_main_menu" sequence="1"/>
 
-        
+
     </data>
 </odoo>
