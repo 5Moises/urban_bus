@@ -1,30 +1,12 @@
 <odoo>
     <data>
-        <record id="viverco_tree" model="ir.ui.view">
-            <field name="name">viverco.main.tree</field>
-            <field name="model">viverco.main</field>
-            <field name="arch" type="xml">
-                <tree string="Viverco">
-                    <field name= "name"/>
-                    <field name= "descrip"/>
-                    <field name= "date_create"/>
-                    <field name= "date_update"/>
-                    <field name="state" widget="badge" decoration-danger="(state == 'cancel')"
-							decoration-success = "(state == 'aproved')"/>
-                </tree>
-            </field>
-        </record>
-        <record id="viverco_form" model="ir.ui.view">
+
+         <record id="viverco_form" model="ir.ui.view">
             <field name="name">viverco.main.form</field>
             <field name="model">viverco.main</field>
             <field name="arch" type="xml">
                 <form string="Viverco SAC">
-                    <header>
-                        <button string="Aprobar" name="get_aproved" type="object" class="oe_highlight"/>
-                        <button string="Cancelar" name="get_cancel" type="object" class="oe_highlight"/>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,aproved,cancel"/>
-
-                    </header>
+                  
                     <sheet>
                         <group class="oe_title">
                             <h1>
@@ -40,6 +22,22 @@
                 </form>
             </field>
         </record>
+        
+        <record id="viverco_tree" model="ir.ui.view">
+            <field name="name">viverco.main.tree</field>
+            <field name="model">viverco.main</field>
+            <field name="arch" type="xml">
+                <tree string="Viverco">
+                    <field name= "name"/>
+                    <field name= "descrip"/>
+                    <field name= "date_create"/>
+                    <field name= "date_update"/>
+                    <field name="state" widget="badge" decoration-danger="(state == 'cancel')"
+							decoration-success = "(state == 'aproved')"/>
+                </tree>
+            </field>
+        </record>
+       
 
         <record id="viverco_action" model="ir.actions.act_window">
             <field name="name">viverco.action</field>
