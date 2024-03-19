@@ -9,8 +9,8 @@ class viverco_main(models.Model):
 
 
 	name = fields.Char(string = "Nombre", traking=1)
-	state = fields.Selection([  ('draft', 'Borrador')
-								('aproved', 'Aprobado')
+	state = fields.Selection([  ('draft', 'Borrador'),
+								('aproved', 'Aprobado'),
 								('cancel', 'Cancelado')], string="Estado", traking=1)
 	descrip = fields.Text(string=u"Descripción",traking=1)
 	date_create = fields.Datetime(string = "Fecha de Registro", traking=1)
