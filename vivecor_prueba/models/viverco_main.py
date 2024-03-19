@@ -16,19 +16,13 @@ class viverco_main(models.Model):
 	date_create = fields.Datetime(string = "Fecha de Registro", traking=1)
 	date_update = fields.Datetime(string="Fecha de Actualización",traking=1)
 
-	@api.model
-	def create(self, values):        
-		result = super().create(values)
-		self.asig_date()
-		return result
+	#@api.model
+	#def create(self, values):        
+	#	result = super().create(values)
+	#	self.asig_date()
+	#	return result
 	
-	
-	#def write(self, values):
-	#	res = super().write(values)
-	#	for i in self:
-	#		i.asig_date()
-	#	return res
-   
+
    
 	
 	def unlink(self):
@@ -36,12 +30,12 @@ class viverco_main(models.Model):
 		
 		return res
 
-	def asig_date(self):
-		for i in self:
-			if not i.date_create:
-				
-			if  fields.Date.today() !=  i.date_update:
-				i.date_update =  fields.Date.today()
+	#def asig_date(self):
+	#	for i in self:
+	#		if not i.date_create:
+	#			
+	#		if  fields.Date.today() !=  i.date_update:
+	#			i.date_update =  fields.Date.today()
 
 
 	def get_aproved():
